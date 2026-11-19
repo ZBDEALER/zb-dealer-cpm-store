@@ -482,3 +482,34 @@ footer {
 .site-header .brand-text p {
   margin: 0 !important;
 }
+@media screen and (max-width: 768px) {
+  header.site-header {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 10px 15px !important;
+  }
+
+  header.site-header .brand {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+  }
+
+  header.site-header .logo {
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+  }
+
+  header.site-header .brand-text {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+}
