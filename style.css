@@ -565,3 +565,24 @@ header .logo {
   object-fit: contain !important;
   flex: 0 0 55px !important;
 }
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 30px;
+}
+
+.site-header .logo {
+  width: 90px !important;
+  height: 90px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.site-header .brand-text h1 {
+  margin: 0;
+}
+
+.site-header .brand-text p {
+  margin: 8px 0 0;
+}
