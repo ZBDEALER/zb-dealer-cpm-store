@@ -32,11 +32,10 @@ header {
 }
 
 .logo {
-  width: 65px;
-  height: 65px;
-  object-fit: contain;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 9px #087dff);
+  width: 120px !important;
+  height: 80px !important;
+  object-fit: contain !important;
+  display: block;
 }
 
 .brand h1 {
