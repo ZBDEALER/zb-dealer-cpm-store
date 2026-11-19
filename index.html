@@ -9,22 +9,23 @@
 
   <meta name="theme-color" content="#05050a">
 
- <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 
 <body>
 
-  <header>
-  <img src="logo.png"
-       alt="Logo"
-       class="logo">
-</header>
-
-    >
-
+  <header class="site-header">
     <div class="brand">
-      <h1>ZB DEALER</h1>
-      <p>PREMIUM CPM CAR STORE</p>
+
+      <img src="logo.png"
+           alt="ZB Dealer Logo"
+           class="logo">
+
+      <div class="brand-text">
+        <h1>ZB DEALER</h1>
+        <p>PREMIUM CPM CAR STORE</p>
+      </div>
+
     </div>
   </header>
 
@@ -42,46 +43,49 @@
     <a href="#cars" class="btn">EXPLORE SHOWROOM</a>
   </section>
 
-<section id="showroom">
-  <h2>ZB DEALER SHOWROOM</h2>
+  <section id="showroom">
+    <h2>ZB DEALER SHOWROOM</h2>
 
-  <div class="category-buttons">
-    <button onclick="filterCars('Trending Cars')">🔥 Trending</button>
-    <button onclick="filterCars('New Update Cars')">🆕 New Updates</button>
-    <button onclick="filterCars('CPM2 Cars')">🚘 CPM2</button>
-    <button onclick="filterCars('All')">All Cars</button>
-  </div>
-<div class="search-box">
-  <input
-    type="text"
-    id="carSearch"
-    placeholder="🔍 Search your favourite car..."
-    oninput="searchCars()"
-  >
-</div>
- <div class="cart-section">
-  <button onclick="showCart()">
-    🛒 MY CART (<span id="cartCount">0</span>)
-  </button>
-</div>
+    <div class="category-buttons">
+      <button onclick="filterCars('Trending Cars')">🔥 Trending</button>
+      <button onclick="filterCars('New Update Cars')">🆕 New Updates</button>
+      <button onclick="filterCars('CPM2 Cars')">🚘 CPM2</button>
+      <button onclick="filterCars('All')">All Cars</button>
+    </div>
 
-<div id="cartBox" style="display:none;">
-  <h2>MY SHOPPING CART</h2>
-  <div id="cartItems"></div>
-  <h3>Total: PKR <span id="cartTotal">0</span></h3>
-  <button onclick="chooseOrderMethod()">I WANT TO ORDER</button>
-</div>
+    <div class="search-box">
+      <input
+        type="text"
+        id="carSearch"
+        placeholder="🔍 Search your favourite car..."
+        oninput="searchCars()"
+      >
+    </div>
 
-  <div id="carList"></div>
-</section>
+    <div class="cart-section">
+      <button onclick="showCart()">
+        🛒 MY CART (<span id="cartCount">0</span>)
+      </button>
+    </div>
+
+    <div id="cartBox" style="display:none;">
+      <h2>MY SHOPPING CART</h2>
+      <div id="cartItems"></div>
+      <h3>Total: PKR <span id="cartTotal">0</span></h3>
+      <button onclick="chooseOrderMethod()">I WANT TO ORDER</button>
+    </div>
+
+    <div id="carList"></div>
+  </section>
+
   <footer id="contact">
     <h3>ZB DEALER</h3>
     <p>Premium CPM Cars • Quality • Style</p>
-    <p>© 2026 Elite CPM Garage. All rights reserved.</p>
+    <p>©️ 2026 ELITE CPM GARAGE. All rights reserved.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="app.js?v=13"></script>
+  <script src="app.js?v=13"></script>
 
 </body>
 </html>
