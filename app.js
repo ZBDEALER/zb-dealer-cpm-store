@@ -84,9 +84,9 @@ button.onclick = () => addToCart(car);
 }
 
 function orderOnWhatsApp(carName, carPrice) {
-  const phone = "923158727583";
+  const phone = "13653257563";
 
-  const message = `Hello CPM REXX!
+  const message = `Hello ZB DEALER!
 
 I want to pay for this car: ${carName}
 Price: PKR ${carPrice}
@@ -159,14 +159,14 @@ function checkoutCart() {
   );
 
   const message =
-    "Hello CPM REXX!\n\nMy order:\n" +
+    "Hello ZB DEALER!\n\nMy order:\n" +
     order + "\n\nTotal: PKR " + total;
 
-  window.open(
-    "https://wa.me/923158727583?text=" +
-    encodeURIComponent(message),
-    "_blank"
-  );
+ window.open(
+  "https://wa.me/13653257563?text=" +
+  encodeURIComponent(message),
+  "_blank"
+);
 }
 
 function chooseOrderMethod() {
@@ -181,7 +181,7 @@ function chooseOrderMethod() {
 
   if (choice) {
     window.open(
-      "https://www.tiktok.com/@rexx_cpm",
+      "https://www.tiktok.com/@zb_dealer_cpm1",
       "_blank"
     );
   } else {
