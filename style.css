@@ -547,3 +547,12 @@ footer {
     transform: none !important;
   }
 }
+header img,
+.logo,
+img.logo {
+  width: 65px !important;
+  height: 65px !important;
+  max-width: 65px !important;
+  max-height: 65px !important;
+  object-fit: contain !important;
+}
