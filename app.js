@@ -397,7 +397,7 @@ function chooseOrderMethod() {
         font-weight:bold;
       ">WhatsApp</button>
 
-      <button id="rexTikTok" style="
+      <button id="ZBTikTok" style="
         display:block;
         width:100%;
         padding:14px;
