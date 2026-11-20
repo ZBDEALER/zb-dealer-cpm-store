@@ -176,7 +176,7 @@ function chooseOrderMethod() {
   }
 
   const choice = confirm(
-    "Order through TikTok?\n\nOK = TikTok\nCancel = WhatsApp"
+    "Order through TikTok?\n\nTIKTOK = TikTok\nWHATSAPP = WhatsApp"
   );
 
   if (choice) {
