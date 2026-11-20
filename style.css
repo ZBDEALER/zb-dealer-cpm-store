@@ -99,18 +99,20 @@ nav a:hover {
   text-shadow: 0 0 10px #4da3ff66;
 }
 
-/* HERO */
+/* HERO POSTER */
 .hero {
-  min-height: 330px;
+  min-height: 420px;
   padding: 75px 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   background:
-    radial-gradient(ellipse at 15% 50%, #4da3ff18, transparent 48%),
-    linear-gradient(135deg, #101318, #1b2028, #0b0d12);
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.60)),
+    url("./mercedes.jpg") center center / cover no-repeat;
+
   border-bottom: 1px solid #343b45;
 }
 
@@ -127,17 +129,15 @@ nav a:hover {
   margin-bottom: 25px;
 }
 
-.hero .btn {
-  display: inline-block;
-  padding: 13px 25px;
-  border-radius: 8px;
-  background: linear-gradient(110deg, #287bc9, #aeb8c4);
-  color: #080b10;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 0 12px #4da3ff33;
+/* MOBILE POSTER */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 300px;
+    padding: 40px 15px;
+    background-position: center;
+    background-size: cover;
+  }
 }
-
 /* SECTIONS */
 section {
   padding: 45px 5%;
