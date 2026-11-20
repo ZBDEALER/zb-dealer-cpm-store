@@ -1,73 +1,182 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Elite CPM Garage Admin</title>
 
   <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<header>
+  <!-- HEADER -->
+  <header>
+    <h1>ELITE CPM GARAGE</h1>
+    <p>PRIVATE ADMIN PANEL</p>
+  </header>
 
-  <h1>ELITE CPM GARAGE</h1>
+  <!-- ADMIN LOGIN -->
+  <section id="login">
 
-  <p>PRIVATE ADMIN PANEL</p>
+    <h2>ADMIN LOGIN</h2>
 
-</header>
+    <input
+      id="email"
+      type="email"
+      placeholder="Admin email"
+    >
 
-<section id="login">
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+    >
 
-  <h2>ADMIN LOGIN</h2>
+    <button class="btn" onclick="loginAdmin()">
+      LOGIN
+    </button>
 
-  <input id="email" type="email" placeholder="Admin email">
+    <p id="message"></p>
 
-  <input id="password" type="password" placeholder="Password">
+  </section>
 
-  <button class="btn" onclick="loginAdmin()">LOGIN</button>
+  <!-- ADMIN DASHBOARD -->
+  <section id="dashboard" hidden>
 
-  <p id="message"></p>
+    <h2>STORE MANAGEMENT</h2>
 
-</section>
+    <!-- ADD CAR -->
+    <h2>ADD CAR</h2>
 
-<section id="dashboard" hidden>
+    <input
+      id="carName"
+      placeholder="Car name"
+    >
 
-  <h2>STORE MANAGEMENT</h2>
+    <label>Real Price (Old Price)</label>
 
-  <input id="carName" placeholder="Car name">
-<label>Real Price (Old Price)</label>
-<input id="originalPrice" type="number" placeholder="Enter Real Price" required>
+    <input
+      id="originalPrice"
+      type="number"
+      placeholder="Enter Real Price"
+      required
+    >
 
-<label>Discounted Price (New Price)</label>
-<input id="carPrice" type="number" placeholder="Enter Discounted Price" required>
-  <input id="carDescription" placeholder="Description">
-<label>Car Category</label>
-<select id="carCategory" required>
-  <option value="Trending Cars">Trending Cars</option>
-  <option value="New Update Cars">New Update Cars</option>
-  <option value="CPM2 Cars">CPM2 Cars</option>
-</select>
-<label for="carImageFile">Select Car Photo</label>
-<input type="file" id="carImageFile" accept="image/*">
+    <label>Discounted Price (New Price)</label>
 
-<button type="button" class="btn" onclick="addCar()">ADD CAR</button>
+    <input
+      id="carPrice"
+      type="number"
+      placeholder="Enter Discounted Price"
+      required
+    >
 
-  <button class="btn" onclick="logoutAdmin()">LOGOUT</button>
+    <input
+      id="carDescription"
+      placeholder="Description"
+    >
 
-  <div id="adminCars"></div>
+    <label>Car Category</label>
 
-</section>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="admin.js"></script>
+    <select id="carCategory" required>
+      <option value="Trending Cars">Trending Cars</option>
+      <option value="New Update Cars">New Update Cars</option>
+      <option value="CPM2 Cars">CPM2 Cars</option>
+    </select>
+
+    <label for="carImageFile">
+      Select Car Photo
+    </label>
+
+    <input
+      type="file"
+      id="carImageFile"
+      accept="image/*"
+    >
+
+    <button
+      type="button"
+      class="btn"
+      onclick="addCar()"
+    >
+      ADD CAR
+    </button>
+
+    <hr>
+
+    <!-- ADD CPM ACCOUNT -->
+    <h2>ADD CPM ACCOUNT</h2>
+
+    <label>Account Name</label>
+
+    <input
+      id="accountName"
+      type="text"
+      placeholder="Enter account name"
+    >
+
+    <label>Account Price (PKR)</label>
+
+    <input
+      id="accountPrice"
+      type="number"
+      placeholder="Enter account price"
+    >
+
+    <label>Account Description</label>
+
+    <textarea
+      id="accountDescription"
+      placeholder="Enter account details"
+    ></textarea>
+
+    <label>Select Account Video</label>
+
+    <input
+      type="file"
+      id="accountVideoFile"
+      accept="video/*"
+    >
+
+    <button
+      type="button"
+      class="btn"
+      onclick="addAccount()"
+    >
+      ADD ACCOUNT
+    </button>
+
+    <!-- MANAGE ACCOUNTS -->
+    <hr>
+
+    <h2>MANAGE ACCOUNTS</h2>
+
+    <div id="adminAccounts"></div>
+
+    <!-- MANAGE CARS -->
+    <hr>
+
+    <h2>MANAGE CARS</h2>
+
+    <div id="adminCars"></div>
+
+    <!-- LOGOUT -->
+    <button
+      class="btn"
+      onclick="logoutAdmin()"
+    >
+      LOGOUT
+    </button>
+
+  </section>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="admin.js"></script>
 
 </body>
-
 </html>
