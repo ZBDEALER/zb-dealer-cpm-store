@@ -538,3 +538,35 @@ footer {
     padding: 14px 8px;
     font-size: 12px;
   }
+/* FIX ACCOUNT VIDEO SIZE */
+#accountList {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#accountList > * {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#accountList video {
+  display: block !important;
+  width: 100% !important;
+  height: 160px !important;
+  max-height: 160px !important;
+  object-fit: contain !important;
+  background: #000;
+  border-radius: 8px;
+}
+
+#accountList img {
+  display: none !important;
+}
