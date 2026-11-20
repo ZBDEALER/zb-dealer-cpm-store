@@ -6,7 +6,7 @@ const db = supabase.createClient(
   SUPABASE_KEY
 );
 
-// Admin login
+// ADMIN LOGIN
 async function loginAdmin() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -25,9 +25,11 @@ async function loginAdmin() {
   document.getElementById("dashboard").hidden = false;
 
   loadCars();
+  loadAccounts();
 }
 
-// Add a car
+
+// ADD CAR
 async function addCar() {
   const name = document.getElementById("carName").value.trim();
   const price = Number(document.getElementById("carPrice").value);
@@ -65,7 +67,7 @@ async function addCar() {
     .from("car-images")
     .getPublicUrl(filePath);
 
-const { error } = await db.from("cars").insert([{
+  const { error } = await db.from("cars").insert([{
     name,
     price,
     original_price: originalPrice,
@@ -73,7 +75,7 @@ const { error } = await db.from("cars").insert([{
     category,
     image_url: imageData.publicUrl,
     is_active: true
-}]);
+  }]);
 
   if (error) {
     alert("Car save failed: " + error.message);
@@ -83,7 +85,9 @@ const { error } = await db.from("cars").insert([{
   alert("Car and both prices added successfully!");
   loadCars();
 }
-// Show cars
+
+
+// SHOW CARS
 async function loadCars() {
   const { data, error } = await db
     .from("cars")
@@ -98,7 +102,7 @@ async function loadCars() {
   const container = document.getElementById("adminCars");
   container.innerHTML = "";
 
-  data.forEach(car => {
+  (data || []).forEach(car => {
     const item = document.createElement("div");
     item.textContent = `${car.name} - PKR ${car.price}`;
 
@@ -111,7 +115,8 @@ async function loadCars() {
   });
 }
 
-// Delete a car
+
+// DELETE CAR
 async function deleteCar(id) {
   if (!confirm("Delete this car?")) return;
 
@@ -125,8 +130,135 @@ async function deleteCar(id) {
   loadCars();
 }
 
-// Logout
+
+// ADD CPM ACCOUNT
+async function addAccount() {
+  const name = document.getElementById("accountName").value.trim();
+  const price = Number(document.getElementById("accountPrice").value);
+  const description = document.getElementById("accountDescription").value.trim();
+  const file = document.getElementById("accountVideoFile").files[0];
+
+  if (!name || !price || price <= 0 || !file) {
+    alert("Enter account name, valid price and select a video.");
+    return;
+  }
+
+  if (!file.type.startsWith("video/")) {
+    alert("Please select a valid video file.");
+    return;
+  }
+
+  const extension = file.name.split(".").pop();
+  const filePath = `${Date.now()}-${Math.random().toString(36).slice(2)}.${extension}`;
+
+  const { error: uploadError } = await db.storage
+    .from("account-videos")
+    .upload(filePath, file, {
+      contentType: file.type,
+      upsert: false
+    });
+
+  if (uploadError) {
+    alert("Video upload failed: " + uploadError.message);
+    return;
+  }
+
+  const { data: videoData } = db.storage
+    .from("account-videos")
+    .getPublicUrl(filePath);
+
+  const { error } = await db.from("accounts").insert([{
+    name,
+    price,
+    description,
+    video_url: videoData.publicUrl,
+    is_active: true
+  }]);
+
+  if (error) {
+    alert("Account save failed: " + error.message);
+    return;
+  }
+
+  alert("CPM Account added successfully!");
+
+  document.getElementById("accountName").value = "";
+  document.getElementById("accountPrice").value = "";
+  document.getElementById("accountDescription").value = "";
+  document.getElementById("accountVideoFile").value = "";
+
+  loadAccounts();
+}
+
+
+// SHOW ACCOUNTS
+async function loadAccounts() {
+  const container = document.getElementById("adminAccounts");
+
+  if (!container) return;
+
+  const { data, error } = await db
+    .from("accounts")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    container.textContent = "Unable to load accounts: " + error.message;
+    return;
+  }
+
+  container.innerHTML = "";
+
+  (data || []).forEach(account => {
+    const item = document.createElement("div");
+
+    const name = document.createElement("h3");
+    name.textContent = account.name;
+
+    const price = document.createElement("p");
+    price.textContent = "PKR " + account.price;
+
+    const description = document.createElement("p");
+    description.textContent = account.description || "";
+
+    const video = document.createElement("video");
+    video.src = account.video_url;
+    video.controls = true;
+    video.playsInline = true;
+    video.style.width = "200px";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "DELETE";
+    deleteButton.onclick = () => deleteAccount(account.id);
+
+    item.append(name, price, description, video, deleteButton);
+    container.appendChild(item);
+  });
+}
+
+
+// DELETE ACCOUNT
+async function deleteAccount(id) {
+  if (!confirm("Delete this account?")) return;
+
+  const { error } = await db
+    .from("accounts")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    alert("Account delete failed: " + error.message);
+    return;
+  }
+
+  alert("Account deleted successfully!");
+  loadAccounts();
+}
+
+
+// LOGOUT
 async function logoutAdmin() {
   await db.auth.signOut();
   location.reload();
 }
+
